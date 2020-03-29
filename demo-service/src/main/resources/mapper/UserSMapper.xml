@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.maple.dmaple.demo.service.dao.mapper.UserSMapper">
+    <resultMap id="baseResult" type="com.maple.dmaple.demo.pojo.bo.User">
+        <id column="userId" property="userid" jdbcType="INTEGER"></id>
+        <result column="userName" property="username" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="selectList" resultMap="baseResult" parameterType="com.maple.dmaple.demo.pojo.bo.User">
+          select userId,userName from user
+          <where>
+              <if test="userNames!=null">
+                  and userName in
+                  <foreach collection="userNames" close=")" open="(" separator="," item="item">
+                      '${item}'
+                  </foreach>
+
+              </if>
+          </where>
+    </select>
+</mapper>

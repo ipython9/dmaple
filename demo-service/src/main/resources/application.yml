@@ -1,0 +1,16 @@
+server:
+  port: 8083
+#mybtis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.maple.dmaple.demo.pojo.bo
+
+spring:
+  application:
+      name:
+          demo-service
+  datasource:
+    username: root
+    password: mysql
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
